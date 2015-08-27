@@ -1,0 +1,1 @@
+admin ALL=(root) NOPASSWD: /usr/bin/service dnsmasq restart,/usr/bin/service dnsmasq force-reload

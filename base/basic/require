@@ -1,0 +1,39 @@
+#! /bin/bash
+
+###
+# if the required file is not exist, then download it.
+# eg.  require /home/admin/file http://www.baidu.com/file
+#
+# Author: rmfish@163.com
+# Date: 20150811
+# Version: 1
+###
+
+USER=`whoami`
+BASH_NAME=$(basename $BASH_SOURCE)
+
+REQUIRED_FILE=$1
+DOWNLOAD_URL=$2
+REQUIRED_DIR=$(dirname "$REQUIRED_FILE")
+
+if [ ! -n "$REQUIRED_FILE" ]; then
+	echo.danger "The required file is null."
+	exit
+fi
+
+if [ -f $REQUIRED_FILE ]; then
+	echo.danger "${REQUIRED_FILE} is exist."
+	exit
+else
+	echo.warning "The file[${REQUIRED_FILE}] is not exist."
+	if [ -n "$DOWNLOAD_URL" ]; then
+		#echo.danger "The download url is null"
+		if [ -w $REQUIRED_DIR ];then
+			mkdir -p $REQUIRED_DIR
+			wget $DOWNLOAD_URL -O $REQUIRED_FILE
+		else
+			echo.danger "Download failed! There is no permission to write the file[$REQUIRED_FILE]"
+		fi
+	fi
+fi
+

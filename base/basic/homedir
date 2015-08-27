@@ -1,0 +1,18 @@
+#! /bin/bash
+
+USER=$1
+
+if [[ $USER = "" ]];then
+    echo.danger "Please input a username with the 1st parameter."
+    exit
+fi
+
+id $USER >& /dev/null  
+if [ $? -ne 0 ]; then  
+   echo.danger "The user $USER is not exist."
+   exit  
+fi
+
+
+HOMEDIR="$(eval echo ~"${USER}")"
+echo $HOMEDIR

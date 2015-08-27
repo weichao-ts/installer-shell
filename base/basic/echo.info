@@ -1,0 +1,6 @@
+#! /bin/bash
+
+tail='\033[m'
+head='\033[32m'
+echo -e ${head}$@${tail}
+

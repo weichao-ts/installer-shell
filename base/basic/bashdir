@@ -1,0 +1,12 @@
+#! /bin/bash
+
+SOURCE=$1
+DIR=$( dirname "$SOURCE" )
+while [ -h "$SOURCE" ]
+do
+    SOURCE=$(readlink "$SOURCE")
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+    DIR=$( cd -P "$( dirname "$SOURCE"  )" && pwd )
+done
+DIR=$( cd -P "$( dirname "$SOURCE" )" && pwd )
+echo $DIR
