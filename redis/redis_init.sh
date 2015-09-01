@@ -9,8 +9,8 @@ CLIEXEC=/usr/local/bin/redis-cli
 PIDFILE=/var/run/redis_${REDISPORT}.pid
 CONF="/etc/redis/${REDISPORT}.conf"
 if [ ! -f $CONF ]; then
-    wget http://download.redis.io/releases/hs_redis.conf
-    cp hs_redis.conf CONF
+    wget https://github.com/weichao-ts/installer-shell/blob/master/redis/hs_redis.conf
+    cp hs_redis.conf $CONF
 fi
 case "$1" in
     start)
