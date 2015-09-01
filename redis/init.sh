@@ -4,6 +4,6 @@ cd redis-3.0.3
 sudo make
 sudo make install
 wget https://raw.githubusercontent.com/weichao-ts/installer-shell/master/redis/redis_init.sh
-chmod 755 redis_init.sh
-cp redis_init.sh /etc/init.d/redis
-chkconfig redis on
+sudo cp redis_init.sh /etc/init.d/redis
+sudo chmod 777 /etc/init.d/redis
+sudo chkconfig redis on
